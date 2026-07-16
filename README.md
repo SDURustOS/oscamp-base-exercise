@@ -72,74 +72,233 @@ Module 4 only runs on **riscv64**. Run `./check.sh` or use the `oscamp` CLI as w
 | 3 | `03_multi_level_pt` | SV39 three-level page tables, page table walk, huge pages (2MB) mapping |
 | 4 | `04_tlb_sim` | TLB lookup/insert/FIFO replacement, flush (all/by page/by ASID), MMU simulation |
 
-## Quick Start
+
+# Getting Started
+
+## Step 1. Create Your Own Repository
+
+Open the course template repository.
+
+Click:
+
+```text
+Use this template
+```
+
+Then choose:
+
+```text
+Create a new repository
+```
+
+Repository Owner:
+
+```
+Your GitHub Account
+```
+
+Repository Name (recommended):
+
+```
+oscamp-<your-github-username>
+```
+
+Example:
+
+```
+oscamp-Bitter127
+```
+
+Create the repository.
+
+---
+
+## Step 2. Clone Your Repository
 
 ```bash
-# 1. Clone repository
-git clone <repo-url> && cd oscamp-base-experiment
+git clone https://github.com/<your-github-username>/<repository>.git
 
-# 2. Build interactive CLI tool
+cd <repository>
+```
+
+---
+
+## Step 3. Build the Interactive Tool
+
+```bash
 cargo build -p oscamp-cli
+```
 
-# 3. Start interactive exercise mode (recommended)
+---
+
+## Step 4. Start Learning
+
+Start watch mode:
+
+```bash
 ./target/debug/oscamp watch
 ```
 
-## Interactive CLI Tool (`oscamp`)
+The tool automatically:
 
-Built-in interactive terminal tool similar to rustlings, supporting real-time file watching and progress tracking:
+* detects file changes
+* reruns tests
+* tracks progress
+* jumps to the next exercise
+
+---
+
+# Interactive CLI
+
+Available commands:
 
 ```bash
-oscamp              # Start interactive watch mode (default)
-oscamp watch        # Same as above
-oscamp list         # View completion status of all exercises
-oscamp check        # Check all exercises in batch
-oscamp run <pkg>    # Run tests for specified exercise
-oscamp hint <pkg>   # View exercise hint
-oscamp help         # Show help
+oscamp watch
+oscamp list
+oscamp check
+oscamp run <package>
+oscamp hint <package>
+oscamp help
 ```
 
-### Watch Mode Features
+---
 
-- **Automatic file change detection**: Automatically re-run tests after saving files
-- **Auto-jump**: Automatically jump to next unfinished exercise after current one passes
-- **Real-time progress bar**: Show overall completion progress
-- **Shortcuts**:
-  - `h` — View hint for current exercise
-  - `l` — View list of all exercises
-  - `n` / `p` — Next / Previous exercise
-  - `r` / `Enter` — Re-run tests
-  - `q` / `Esc` — Quit
+# Manual Testing
 
-### Manual Execution
+Run one exercise:
 
 ```bash
-# Run tests for a specific exercise
 cargo test -p thread_spawn
+```
 
-# View detailed output
+Run with output:
+
+```bash
 cargo test -p thread_spawn -- --nocapture
+```
 
-# Check all exercises
+Run all exercises:
+
+```bash
 cargo test --workspace
 ```
 
-## Workflow
+---
 
-1. **Start**: Run `./target/debug/oscamp watch` to enter interactive mode
-2. **Read**: Open current exercise file `src/lib.rs`, read documentation to understand concepts
-3. **Code**: Find `todo!()` markers, complete code according to comment hints
-4. **Save**: After saving file, CLI automatically re-runs tests
-5. **Pass**: After passing tests, automatically jump to next exercise; press `h` to view hints anytime
+# Recommended Workflow
 
-## Submitting Scores
+For each exercise:
 
-Push to the `main` branch of your repository to trigger the scoring pipeline. GitHub Actions will automatically run all tests, calculate your score (out of 100), and upload it to the OpenCamp leaderboard.
+1. Open `src/lib.rs`
+2. Read the comments
+3. Find `todo!()`
+4. Implement the missing code
+5. Save the file
+6. Re-run tests
+7. Continue to the next exercise
 
-1. Accept the GitHub Classroom assignment link — this creates your personal repository
-2. Complete exercises locally or in **GitHub Codespaces** (click "Code" > "Codespaces" > "Create")
-3. Commit and push your changes to `main`
-4. Check the "Actions" tab to see your score
+---
+
+# GitHub Actions Auto Grading
+
+Every push to the **main** branch automatically triggers GitHub Actions.
+
+The workflow will:
+
+* Build the project
+* Run all tests
+* Execute the grading script
+* Calculate your score
+* Generate a grading report
+
+---
+
+# Submit Your Work
+
+After completing one or more exercises:
+
+```bash
+git add .
+
+git commit -m "Finish Module"
+
+git push origin main
+```
+
+After pushing:
+
+Open your repository:
+
+```text
+Actions
+```
+
+Select:
+
+```text
+OSCamp Autograding
+```
+
+Wait until the workflow finishes.
+
+You can then view:
+
+* Passed exercises
+* Failed exercises
+* Total score
+
+---
+
+# Submit Repository
+
+After finishing the assignment, submit your repository URL to the instructor.
+
+Example:
+
+```text
+https://github.com/Bitter127/oscamp-Bitter127
+```
+
+---
+
+# Frequently Asked Questions
+
+## GitHub Actions is not running
+
+Please check:
+
+* Did you push to the `main` branch?
+* Did you successfully push to GitHub?
+* Is GitHub Actions enabled for your repository?
+
+---
+
+## GitHub Actions failed
+
+Open:
+
+```text
+Actions
+→ OSCamp Autograding
+```
+
+Expand the failed step and inspect the log.
+
+---
+
+## Local tests pass but GitHub Actions fail
+
+Common causes include:
+
+* Missing files
+* Environment differences
+* Forgot to push the latest commit
+
+Always ensure you have pushed the newest code before checking GitHub Actions.
+
+---
+
+
 
 ## Notes
 
@@ -149,3 +308,4 @@ Push to the `main` branch of your repository to trigger the scoring pipeline. Gi
 ## License
 
 MIT
+
