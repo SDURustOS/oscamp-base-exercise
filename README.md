@@ -150,17 +150,29 @@ The tool automatically:
 
 # Interactive CLI
 
-Available commands:
+Built-in interactive terminal tool similar to rustlings, supporting real-time file watching and progress tracking:
 
 ```bash
-oscamp watch
-oscamp list
-oscamp check
-oscamp run <package>
-oscamp hint <package>
-oscamp help
+oscamp              # Start interactive watch mode (default)
+oscamp watch        # Same as above
+oscamp list         # View completion status of all exercises
+oscamp check        # Check all exercises in batch
+oscamp run <pkg>    # Run tests for specified exercise
+oscamp hint <pkg>   # View exercise hint
+oscamp help         # Show help
 ```
 
+### Watch Mode Features
+
+- **Automatic file change detection**: Automatically re-run tests after saving files
+- **Auto-jump**: Automatically jump to next unfinished exercise after current one passes
+- **Real-time progress bar**: Show overall completion progress
+- **Shortcuts**:
+  - `h` — View hint for current exercise
+  - `l` — View list of all exercises
+  - `n` / `p` — Next / Previous exercise
+  - `r` / `Enter` — Re-run tests
+  - `q` / `Esc` — Quit
 ---
 
 # Manual Testing
